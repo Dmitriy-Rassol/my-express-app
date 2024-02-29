@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  nav 
+    a(href="/") главная
+    a(href="/users") пользователи
+
+  h1 Users
+  ul
+    each user in users
+      li= user.name
+
+  h2 Add User
+  form(action='/users' method='POST')
+    label(for='name') Name:
+    input(type='text' name='name')
+    button(type='submit') Add User

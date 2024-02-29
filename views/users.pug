@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  nav
+    a(href="/") главная
+    a(href="/users") пользователи
+
+  h1 Users List
+
+  ul
+    each user in users
+      li
+        | Name: #{user.name}
+        form(method='POST', action=`/users/${user.id}?_method=PUT`)
+          input(type='text', name='name', value=user.name)
+          button(type='submit') Update
+        form(method='POST', action=`/users/${user.id}?_method=DELETE`)
+          button(type='submit') Delete
